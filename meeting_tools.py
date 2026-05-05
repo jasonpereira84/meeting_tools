@@ -22,6 +22,7 @@ EMAIL_LIMIT = None  # Set to a number to limit emails, or None for all
 
 # File Processing Settings
 PROCESSING_FOLDER = "./processing_folder"
+OUTPUT_FOLDER = "./output_folder"
 
 # File Organizer Categories
 CATEGORIES = [
@@ -258,13 +259,18 @@ def fix_filenames(folder_path):
 # 4. FILE ORGANIZER
 # ============================================================================
 
-def organize_files(source_folder, categories):
+def organize_files(source_folder, categories, output_folder=None):
     """Organize txt files into subfolders based on filename keywords"""
     source_path = Path(source_folder)
+    output_path = Path(output_folder) if output_folder else source_path
     
     if not source_path.exists():
         print(f"Creating folder '{source_folder}'...")
         source_path.mkdir(parents=True, exist_ok=True)
+    
+    if output_folder and not output_path.exists():
+        print(f"Creating output folder '{output_folder}'...")
+        output_path.mkdir(parents=True, exist_ok=True)
     
     txt_files = list(source_path.glob("*.txt"))
     
@@ -287,7 +293,7 @@ def organize_files(source_folder, categories):
             multiple_matches.append((txt_file.name, matches))
         else:
             category = matches[0]
-            category_folder = source_path / category
+            category_folder = output_path / category
             category_folder.mkdir(exist_ok=True)
             
             destination = category_folder / txt_file.name
@@ -323,6 +329,7 @@ def print_menu():
     print("0. Exit")
     print("\nCurrent settings:")
     print(f"  - Processing folder: {PROCESSING_FOLDER}")
+    print(f"  - Output folder: {OUTPUT_FOLDER}")
     print(f"  - Categories: {', '.join(CATEGORIES)}")
     if OUTLOOK_AVAILABLE:
         print(f"  - Outlook: {OUTLOOK_ACCOUNT}/{OUTLOOK_FOLDER}")
@@ -359,7 +366,7 @@ def main():
         
         elif choice == '4':
             print("\n--- Organizing Files ---")
-            organize_files(PROCESSING_FOLDER, CATEGORIES)
+            organize_files(PROCESSING_FOLDER, CATEGORIES, OUTPUT_FOLDER)
         
         elif choice == '5':
             print("\n--- Running All Steps ---")
@@ -368,7 +375,7 @@ def main():
             print("\nStep 2/3: Fixing filenames...")
             fix_filenames(PROCESSING_FOLDER)
             print("\nStep 3/3: Organizing files...")
-            organize_files(PROCESSING_FOLDER, CATEGORIES)
+            organize_files(PROCESSING_FOLDER, CATEGORIES, OUTPUT_FOLDER)
             print("\n✓ All steps completed!")
         
         elif choice == '6':

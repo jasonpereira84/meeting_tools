@@ -36,13 +36,15 @@ EMAIL_LIMIT = None  # Set to a number to limit emails, or None for all
 
 # File Processing Settings
 PROCESSING_FOLDER = "./processing_folder"
+OUTPUT_FOLDER = "./output_folder"
 
 # File Organizer Categories
 CATEGORIES = [
     "auctane",
     "pattern",
     "reese",
-    "senthil"
+    "senthil",
+    "santi"
 ]
 ```
 
@@ -93,9 +95,9 @@ MEETING TOOLS - All-in-One Utility
 
 ### 4. Organize Files
 - Sorts txt files into subfolders based on keywords in filenames
-- Creates category folders automatically
+- Creates category folders automatically in the `OUTPUT_FOLDER`
 - Files matching exactly one keyword are moved to that category folder
-- Files with no matches or multiple matches stay in the original location
+- Files with no matches or multiple matches stay in the processing folder
 - Case-insensitive matching
 
 ### 5. Run All Steps
@@ -131,8 +133,8 @@ This is useful for processing a batch of newly extracted emails.
 - Update `OUTLOOK_ACCOUNT` and `OUTLOOK_FOLDER` with the exact names shown
 
 **"Folder does not exist"**
-- The script will automatically create the `PROCESSING_FOLDER` if it doesn't exist
-- If you want to use a different location, update the path in the configuration
+- The script will automatically create `PROCESSING_FOLDER` and `OUTPUT_FOLDER` if they don't exist
+- If you want to use different locations, update the paths in the configuration
 
 ## Original Scripts
 
