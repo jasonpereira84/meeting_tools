@@ -289,8 +289,12 @@ def organize_files(source_folder, categories, output_folder=None):
         
         if len(matches) == 0:
             uncategorized.append(txt_file.name)
+            destination = output_path / txt_file.name
+            shutil.move(str(txt_file), str(destination))
         elif len(matches) > 1:
             multiple_matches.append((txt_file.name, matches))
+            destination = output_path / txt_file.name
+            shutil.move(str(txt_file), str(destination))
         else:
             category = matches[0]
             category_folder = output_path / category
@@ -301,12 +305,12 @@ def organize_files(source_folder, categories, output_folder=None):
             print(f"Moved '{txt_file.name}' -> '{category}/'")
     
     if uncategorized:
-        print(f"\n{len(uncategorized)} file(s) didn't match any category (left in place):")
+        print(f"\n{len(uncategorized)} file(s) didn't match any category (moved to output folder):")
         for filename in uncategorized:
             print(f"  - {filename}")
     
     if multiple_matches:
-        print(f"\n{len(multiple_matches)} file(s) matched multiple categories (left in place):")
+        print(f"\n{len(multiple_matches)} file(s) matched multiple categories (moved to output folder):")
         for filename, matches in multiple_matches:
             print(f"  - {filename} (matches: {', '.join(matches)})")
     

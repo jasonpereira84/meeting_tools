@@ -94,10 +94,10 @@ MEETING TOOLS - All-in-One Utility
 - Handles duplicate filenames by appending a counter
 
 ### 4. Organize Files
-- Sorts txt files into subfolders based on keywords in filenames
-- Creates category folders automatically in the `OUTPUT_FOLDER`
-- Files matching exactly one keyword are moved to that category folder
-- Files with no matches or multiple matches stay in the processing folder
+- Sorts txt files into subfolders in `OUTPUT_FOLDER` based on keywords in filenames
+- Creates category folders automatically
+- Files matching exactly one keyword are moved to that category subfolder
+- Files with no matches or multiple matches are moved to the output folder root
 - Case-insensitive matching
 
 ### 5. Run All Steps
