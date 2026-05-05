@@ -21,7 +21,7 @@ OUTLOOK_FOLDER = "Meeting Summaries"
 EMAIL_LIMIT = None  # Set to a number to limit emails, or None for all
 
 # File Processing Settings
-PROCESSING_FOLDER = "../processing_folder"
+PROCESSING_FOLDER = "./processing_folder"
 
 # File Organizer Categories
 CATEGORIES = [
