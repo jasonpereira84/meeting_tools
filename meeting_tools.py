@@ -190,11 +190,11 @@ def sanitize_filename(name):
     return sanitized
 
 def format_external_internal(text):
-    """Format External/Internal keywords to be capitalized and wrapped in square brackets"""
-    text = re.sub(r'^external\b', '[EXTERNAL]', text, flags=re.IGNORECASE)
-    text = re.sub(r'^internal\b', '[INTERNAL]', text, flags=re.IGNORECASE)
-    text = re.sub(r'^[_\s]*external\b', '[EXTERNAL]', text, flags=re.IGNORECASE)
-    text = re.sub(r'^[_\s]*internal\b', '[INTERNAL]', text, flags=re.IGNORECASE)
+    """Format External/Internal keywords (including common typos) to be title-cased and wrapped in square brackets"""
+    internal_typos = r'(?:internal|intenral|interna|interal|internla|interanl|itnernal)'
+    external_typos = r'(?:external|extenral|externa|exteral|externla|exteranl|etxernal)'
+    text = re.sub(r'^[_\s]*' + external_typos, '[External]', text, flags=re.IGNORECASE)
+    text = re.sub(r'^[_\s]*' + internal_typos, '[Internal]', text, flags=re.IGNORECASE)
     return text
 
 def fix_filenames(folder_path):
