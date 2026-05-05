@@ -18,18 +18,18 @@ except ImportError:
 # Outlook Extractor Settings
 OUTLOOK_ACCOUNT = "jasfper@amazon.com"
 OUTLOOK_FOLDER = "Meeting Summaries"
-EXTRACTION_OUTPUT_DIR = "../meeting_summaries"
 EMAIL_LIMIT = None  # Set to a number to limit emails, or None for all
 
 # File Processing Settings
-PROCESSING_FOLDER = "../meeting_summaries"
+PROCESSING_FOLDER = "../processing_folder"
 
 # File Organizer Categories
 CATEGORIES = [
     "auctane",
     "pattern",
     "reese",
-    "senthil"
+    "senthil",
+    "santi"
 ]
 
 # ============================================================================
@@ -345,7 +345,7 @@ def main():
             try:
                 extractor = OutlookEmailExtractor()
                 folder_path = f"{OUTLOOK_ACCOUNT}/{OUTLOOK_FOLDER}"
-                extractor.extract_emails(folder_path, EXTRACTION_OUTPUT_DIR, EMAIL_LIMIT)
+                extractor.extract_emails(folder_path, PROCESSING_FOLDER, EMAIL_LIMIT)
             except Exception as e:
                 print(f"\nError: {e}")
         

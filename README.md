@@ -32,7 +32,6 @@ Edit the configuration section at the top of `meeting_tools.py`:
 # Outlook Extractor Settings
 OUTLOOK_ACCOUNT = "your_email@example.com"
 OUTLOOK_FOLDER = "Meeting Summaries"
-EXTRACTION_OUTPUT_DIR = "meeting_summaries"
 EMAIL_LIMIT = None  # Set to a number to limit emails, or None for all
 
 # File Processing Settings
