@@ -77,12 +77,12 @@ MEETING TOOLS - All-in-One Utility
 - Connects to your Outlook application
 - Extracts emails from a specified folder
 - Saves each email as a text file with timestamp and subject
-- Files are named: `YYYYMMDD_HHMMSS_Subject.txt`
+- Files are named: `YYYYMMDD_HHMMSS_Subject.md`
 
 ### 2. Clean Meeting Files
-- Removes `<data:image/png;base64...>` tags from text files
+- Removes `<data:image/png;base64...>` tags from files
 - Removes Zoom footer text starting from "To view your meeting summaries..."
-- Processes all `.txt` files in the specified folder
+- Processes all `.md` files in the specified folder
 - Overwrites files with cleaned content
 
 ### 3. Fix Filenames
@@ -94,7 +94,7 @@ MEETING TOOLS - All-in-One Utility
 - Handles duplicate filenames by appending a counter
 
 ### 4. Organize Files
-- Sorts txt files into subfolders in `OUTPUT_FOLDER` based on keywords in filenames
+- Sorts `.md` files into subfolders in `OUTPUT_FOLDER` based on keywords in filenames
 - Creates category folders automatically
 - Files matching exactly one keyword are moved to that category subfolder
 - Files with no matches or multiple matches are moved to the output folder root

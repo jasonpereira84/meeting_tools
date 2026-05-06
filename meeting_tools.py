@@ -106,7 +106,7 @@ class OutlookEmailExtractor:
                 
                 timestamp = received.strftime('%Y%m%d_%H%M%S')
                 safe_subject = "".join(c for c in subject if c.isalnum() or c in (' ', '-', '_'))[:50]
-                filename = f"{timestamp}_{safe_subject}.txt"
+                filename = f"{timestamp}_{safe_subject}.md"
                 
                 filepath = os.path.join(output_dir, filename)
                 with open(filepath, 'w', encoding='utf-8') as f:
@@ -148,13 +148,13 @@ def clean_meeting_files(folder_path):
         print(f"Creating folder '{folder_path}'...")
         os.makedirs(folder_path, exist_ok=True)
     
-    txt_files = [f for f in os.listdir(folder_path) if f.endswith('.txt')]
+    txt_files = [f for f in os.listdir(folder_path) if f.endswith('.md')]
     
     if not txt_files:
-        print(f"No .txt files found in '{folder_path}'")
+        print(f"No .md files found in '{folder_path}'")
         return
     
-    print(f"Found {len(txt_files)} txt file(s). Processing...")
+    print(f"Found {len(txt_files)} file(s). Processing...")
     
     for filename in txt_files:
         file_path = os.path.join(folder_path, filename)
@@ -272,13 +272,13 @@ def organize_files(source_folder, categories, output_folder=None):
         print(f"Creating output folder '{output_folder}'...")
         output_path.mkdir(parents=True, exist_ok=True)
     
-    txt_files = list(source_path.glob("*.txt"))
+    txt_files = list(source_path.glob("*.md"))
     
     if not txt_files:
-        print(f"No txt files found in '{source_folder}'")
+        print(f"No .md files found in '{source_folder}'")
         return
     
-    print(f"Found {len(txt_files)} txt file(s) to organize\n")
+    print(f"Found {len(txt_files)} file(s) to organize\n")
     
     uncategorized = []
     multiple_matches = []
